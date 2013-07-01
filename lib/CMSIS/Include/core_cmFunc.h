@@ -591,6 +591,7 @@ __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_FPSCR(void)
  */
 __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
 {
+  (void)fpscr;
 #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) );
 #endif
