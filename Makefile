@@ -15,7 +15,7 @@ TARGET		:= output
 OUTPUT 		:= $(BUILDDIR)/$(TARGET)
 CFLAGS 		:= -std=c99 -mcpu=cortex-m3 -g -mthumb -Os -Wall -W
 CFLAGS 		+= -ffreestanding -nostartfiles -nostdlib -fno-builtin
-CFLAGS		+= -fdata-sections -ffunction-sections
+CFLAGS		+= -fdata-sections -ffunction-sections -Wno-unused-parameter
 
 LDFLAGS 	:= -gc-sections
 LDPATH		:= 
