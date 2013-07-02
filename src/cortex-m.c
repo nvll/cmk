@@ -1,5 +1,5 @@
 // vim expandtab:ts=4:sw=4:sts=4
-#include <irqn.h>
+#include <inc/irqn.h>
 #include <cortex-m.h>
 #include <stdio.h>
 #include <stddef.h>

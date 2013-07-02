@@ -1,6 +1,6 @@
 /* Adapted from the LK stellaris port at github.com/travisg/lk */
 #pragma once
-#include <hw_ints.h>
+#include <inc/hw_ints.h>
 
 typedef enum IRQn {
     // base Cortex IRQs
