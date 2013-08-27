@@ -1,0 +1,15 @@
+ARCH    	:=
+CC			:=
+CFLAGS 		:=
+DEFINES 	:=
+INCLUDES 	:=
+LD			:=
+LDFLAGS		:=
+LDPATH		:=
+LDSCRIPT	:=
+LDFLAGS 	:=
+NM		 	:=
+OBJECTS 	:=
+SOURCES 	:=
+SIZE	 	:=
+MODULE_DEPS :=

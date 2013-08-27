@@ -1,8 +1,9 @@
 // vim expandtab:ts=4:sw=4:sts=4
 #include <inc/irqn.h>
 #include <cortex-m.h>
-#include <stdio.h>
-#include <stddef.h>
+#include <c/stdio.h>
+#include <c/stdint.h>
+#include <c/stddef.h>
 
 #define CM_HANDLER(x) &x##_handler
 #define DEFINE_CM_HANDLER(x) \
@@ -26,16 +27,20 @@ extern uint32_t __bss_end__;
 void _start(void)
 {
     uint32_t *src = &__text_end__, *dest = &__data_start__;
+
     while (dest < &__data_end__) {
         *dest++ = *src++;
     }
 
     uint32_t *bss = &__bss_start__;
+
     while (bss < &__bss_end__) {
         *bss++ = 0;
     }
 
     main();
+
+    while (1);
 }
 
 void cm_dump_frame(struct cm_stack_frame *frame)
@@ -55,7 +60,7 @@ DEFINE_CM_HANDLER(debug);
 DEFINE_CM_HANDLER(pendsv);
 DEFINE_CM_HANDLER(systick);
 
-const irq_handler_t __SECTION(".text.vector_table") vector_table[] = {
+const irq_handler_t __SECTION(".text.nvic") vector_table[] = {
     cm_stack + sizeof(cm_stack), // ARM stack grows downward
     _start,
     CM_HANDLER(nmi),

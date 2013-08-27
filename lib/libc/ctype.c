@@ -1,22 +1,25 @@
-#include <ctype.h>
+#include <c/ctype.h>
 
-int tolower(int c)
+int LIBC(tolower)(int c)
 {
-	if (c >= 65 && c <= 90)
-		return (c + 32);
-	return c;
+    if (c >= 65 && c <= 90)
+        return (c + 32);
+
+    return c;
 }
 
-int toupper(int c)
+int LIBC(toupper)(int c)
 {
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	return c;
+    if (c >= 97 && c <= 122)
+        return (c - 32);
+
+    return c;
 }
 
-int isdigit(int c)
+int LIBC(isdigit)(int c)
 {
-	if (c >= 48 && c <= 57)
-		return 1;
-	return 0;
+    if (c >= 48 && c <= 57)
+        return 1;
+
+    return 0;
 }

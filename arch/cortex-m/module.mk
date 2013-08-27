@@ -3,12 +3,13 @@ PWD			:= $(GET_PARENT)
 
 INCLUDES 	+= -I $(PWD)
 LDFLAGS 	+= -T $(LDSCRIPT) 
-DEFINES 	+= -D CM_STACKSIZE=2048		\
-			   -D CORTEX_M4=1			\
+DEFINES 	+= -D CORTEX_M4 -D CM_STACKSIZE=2048		\
 
 LDSCRIPT 	+= $(PWD)/cortex-m.ld
 LDPATH		+= -L $(PWD)
 
-SOURCES		+=				\
+MODULE_DEPS += \
+	lib/libc
+
+SOURCES		+=			\
 	$(PWD)/cortex-m.c		\
-	$(PWD)/main.c			\
