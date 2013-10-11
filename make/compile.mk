@@ -25,7 +25,7 @@ $(BUILDDIR)/$(ARCH)/%.o: CC := $(CC)
 $(BUILDDIR)/$(ARCH)/%.o: %.c
 	@$(MKDIR)
 	$(ECHO) echo "[$(CC)] compiling $<"
-	$(ECHO) $(CC) $(DEFINES) $(CFLAGS) $(INCLUDES) $< -c -o $@
+	$(ECHO) $(CC) $(DEFINES) $(CFLAGS) $(INCLUDES) -MD $< -c -o $@
 
 $(BUILDDIR)/$(ARCH)/%.o: DEFINES := $(DEFINES)
 $(BUILDDIR)/$(ARCH)/%.o: CXXFLAGS := $(CXXFLAGS)
@@ -34,7 +34,7 @@ $(BUILDDIR)/$(ARCH)/%.o: CXX := $(CXX)
 $(BUILDDIR)/$(ARCH)/%.o: %.cpp
 	@$(MKDIR)
 	$(ECHO) echo "[$(CXX)] compiling $<"
-	$(ECHO) $(CXX) $(DEFINES) $(CXXFLAGS) $(INCLUDES) $< -c -o $@
+	$(ECHO) $(CXX) $(DEFINES) $(CXXFLAGS) $(INCLUDES) -MD $< -c -o $@
 
 $(OUTPUT).bin: OBJCOPY := $(OBJCOPY)
 $(OUTPUT).bin: $(OUTPUT)
@@ -56,3 +56,6 @@ $(OUTPUT).size: $(OUTPUT)
 	$(ECHO) echo "generating $@"
 	$(ECHO) $(SIZE) $^ >> $@
 
+# .d files are generated via the -MD passed to gcc/clang in the c/cpp rules
+-include $(C_OBJECTS:.o=.d)
+-include $(CXX_OBJECTS:.o=.d)
