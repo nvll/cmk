@@ -10,6 +10,8 @@ C_OBJECTS    := $(addprefix $(BUILDDIR)/$(ARCH)/, $(subst .c,.o,$(C_SOURCES)))
 CXX_OBJECTS  := $(addprefix $(BUILDDIR)/$(ARCH)/, $(subst .cpp,.o,$(CXX_SOURCES)))
 OUTPUT	 	 := $(addprefix $(BUILDDIR)/, $(OUTPUT))
 
+# The variables in front of the targets allow each project file to define and use the immediate
+# values before clear.mk clears them all out again
 $(OUTPUT): LD := $(LD)
 $(OUTPUT): LDFLAGS := $(LDFLAGS)
 $(OUTPUT): LDPATH := $(LDPATH)

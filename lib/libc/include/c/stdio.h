@@ -19,6 +19,7 @@ __CPP_START
 extern int putchar(int);
 void LIBC(puts)(const char* s);
 int  LIBC(printf)(const char* __restrict__ format, ...);
+int  LIBC(sprintf)(char *buf, const char* __restrict__ format, ...);
 
 /* Non-Standard libc functions */
 void to_hex(unsigned int val, char* buf, int width, int flags);

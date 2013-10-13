@@ -1,12 +1,13 @@
 #include <c/string.h>
 #include "units.h"
 
-NEW_TEST(strlen)
+MAKE_TEST(strlen)
 {
-    char s[] = "1234567890";
+    char s[256];
 
-    for (int i = 10; i > 0; i--) {
+    /* Keep shrinking the string and ensuring that both strlens match up */
+    for (int i = sizeof(s); i > 0; i--) {
         s[i] = '\0';
-        CHECK(strlen(s) == libc_strlen(s));
+        TEST_EQ(strlen(s), libc_strlen(s), NULL);
     }
 }

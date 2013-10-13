@@ -5,7 +5,17 @@
 
 std::vector<testDesc> tests;
 
-int main (int argc, char *argv[])
+/*bool _TEST_EQ(const char *buf1, const char *buf2)
+{
+    return (strcmp(buf1, buf2) == 0);
+}
+
+bool _TEST_EQ(int v1, int v2)
+{
+    return (v1 == v2);
+}*/
+
+int run_tests(void)
 {
     for (auto f : tests) {
         uint32_t local_cnt = 0, local_pass = 0;

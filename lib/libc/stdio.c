@@ -8,13 +8,18 @@
 
 static const char hex_tbl[] = "0123456789abcdef";
 
-void LIBC(puts)(const char* s)
+void LIBC(puts)(const char *s)
 {
     _print_string(s);
     putchar('\n');
 }
 
-int LIBC(printf)(const char* __restrict__ format, ...)
+int LIBC(sprintf)(char *buf, const char *__restrict__ format, ...)
+{
+    return 0;
+}
+
+int LIBC(printf)(const char *__restrict__ format, ...)
 {
     char buf[38];
     va_list ap;
@@ -90,7 +95,7 @@ parse_arg:
 }
 
 /* Non-Standard libc functions */
-void to_hex(unsigned int val, char* buf, int width, int flags)
+void to_hex(unsigned int val, char *buf, int width, int flags)
 {
     char c;
     int i = 0;
@@ -109,7 +114,7 @@ void to_hex(unsigned int val, char* buf, int width, int flags)
     strrev(buf);
 }
 
-void itob(unsigned int val, char* buf, int flags)
+void itob(unsigned int val, char *buf, int flags)
 {
     int pos = 0, bit = 0;
 
@@ -132,7 +137,7 @@ void itob(unsigned int val, char* buf, int flags)
     strrev(buf);
 }
 
-void _print_string(const char* s)
+void _print_string(const char *s)
 {
     for (const char* tmp = s; *tmp != '\n'; tmp++)
         putchar(*tmp);
